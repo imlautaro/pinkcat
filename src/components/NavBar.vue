@@ -14,13 +14,19 @@
 					</NuxtLink>
 				</div>
 				<div
-					class="col-span-1 col-start-3 flex items-center justify-end"
+					class="col-span-1 col-start-3 flex items-center justify-end space-x-4"
 				>
 					<NuxtLink
 						to="https://instagram.com/pinkcatok"
 						target="_blank"
 					>
 						<Icon name="ion:logo-instagram" />
+					</NuxtLink>
+					<NuxtLink
+						to="https://www.facebook.com/PinkCatTienda"
+						target="_blank"
+					>
+						<Icon name="ion:logo-facebook" />
 					</NuxtLink>
 				</div>
 			</div>
