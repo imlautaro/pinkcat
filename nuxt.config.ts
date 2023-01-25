@@ -8,11 +8,17 @@ export default defineNuxtConfig({
 			Inter: [400, 500, 700, 900],
 		},
 	},
-	modules: ['@nuxtjs/google-fonts', '@nuxtjs/supabase'],
+	modules: ['@nuxtjs/google-fonts', '@nuxtjs/supabase', 'nuxt-schema-org'],
 	runtimeConfig: {
 		public: {
 			siteURL: 'http://localhost:3000',
 		},
+	},
+	schemaOrg: {
+		currency: 'ARS',
+		host: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+		inLanguage: 'es-AR',
+		title: 'PINKCAT | Tienda de artículos para amantes de los gatos',
 	},
 	srcDir: 'src',
 	unocss: {

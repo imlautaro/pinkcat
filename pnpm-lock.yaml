@@ -4,6 +4,7 @@ specifiers:
   '@nuxtjs/google-fonts': 3.0.0-1
   '@nuxtjs/supabase': ^0.3.0
   nuxt: ^3.0.0
+  nuxt-schema-org: ^2.1.0
   oxecore: ^0.0.1
   sitemap: ^7.1.1
 
@@ -11,6 +12,7 @@ devDependencies:
   '@nuxtjs/google-fonts': 3.0.0-1
   '@nuxtjs/supabase': 0.3.0
   nuxt: 3.0.0
+  nuxt-schema-org: 2.1.0
   oxecore: 0.0.1_nuxt@3.0.0
   sitemap: 7.1.1
 
@@ -934,6 +936,13 @@ packages:
     resolution: {integrity: sha512-0T8FYrrYwcOGRptWpkXpITaYT554fy5vgU/Yf9K67hB6X4v24sLFHR1yhLYvAj3hfBF5CbJQicuKFf1z63bZ5g==}
     dependencies:
       '@unhead/schema': 1.0.16
+    dev: true
+
+  /@unhead/schema-org-vue/0.4.0:
+    resolution: {integrity: sha512-GEO7fYz0gVv72eD1Z8UbY4i2Dh6ymbdKWKekDd4vH5tNamWipq7hfBglYqLRZAjjSEzYr/bHIw+Y3nNvEcQZiw==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      '@unhead/vue': '>=1.0.10'
     dev: true
 
   /@unhead/schema/1.0.16:
@@ -3639,6 +3648,18 @@ packages:
       - rollup
       - supports-color
       - vue
+    dev: true
+
+  /nuxt-schema-org/2.1.0:
+    resolution: {integrity: sha512-6nKcwQYkt26vm3rXKy3c6nvokCdFYwwuprSA8AkBWRG8S03zhv6THJ8HIIHmmyKV6K3wuImlVuiIPH2O/FUPHg==}
+    dependencies:
+      '@nuxt/kit': 3.0.0
+      '@unhead/schema-org-vue': 0.4.0
+      pathe: 1.0.0
+    transitivePeerDependencies:
+      - '@unhead/vue'
+      - rollup
+      - supports-color
     dev: true
 
   /nuxt/3.0.0:
