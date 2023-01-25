@@ -9,6 +9,11 @@ export default defineNuxtConfig({
 		},
 	},
 	modules: ['@nuxtjs/google-fonts', '@nuxtjs/supabase'],
+	runtimeConfig: {
+		public: {
+			siteURL: 'http://localhost:3000',
+		},
+	},
 	srcDir: 'src',
 	unocss: {
 		shortcuts: {
