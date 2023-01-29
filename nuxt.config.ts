@@ -2,7 +2,7 @@ import { colors } from '@unocss/preset-mini'
 
 export default defineNuxtConfig({
 	css: ['~/assets/css/styles.css'],
-	extends: ['oxecore'],
+	extends: ['supauth'],
 	googleFonts: {
 		families: {
 			Inter: [400, 500, 700, 900],

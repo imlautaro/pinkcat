@@ -5,16 +5,16 @@ specifiers:
   '@nuxtjs/supabase': ^0.3.0
   nuxt: ^3.0.0
   nuxt-schema-org: ^2.1.0
-  oxecore: ^0.0.1
   sitemap: ^7.1.1
+  supauth: ^0.0.4
 
 devDependencies:
   '@nuxtjs/google-fonts': 3.0.0-1
   '@nuxtjs/supabase': 0.3.0
   nuxt: 3.0.0
   nuxt-schema-org: 2.1.0
-  oxecore: 0.0.1_nuxt@3.0.0
   sitemap: 7.1.1
+  supauth: 0.0.4_nuxt@3.0.0
 
 packages:
 
@@ -4704,6 +4704,23 @@ packages:
       postcss-selector-parser: 6.0.11
     dev: true
 
+  /supauth/0.0.4_nuxt@3.0.0:
+    resolution: {integrity: sha512-nQzD5kJ6lrWYupsrSXx1IKiahvkj/4nk9CrJjJnBkFjCUqOrnyPiGr4y4lRS/fu8wnJsg7/egCy9Oa8PevdVzg==}
+    dependencies:
+      '@nuxtjs/supabase': 0.3.0
+      oxecore: 0.0.1_nuxt@3.0.0
+      uuid: 9.0.0
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - encoding
+      - nuxt
+      - rollup
+      - supports-color
+      - vite
+      - vue
+      - webpack
+    dev: true
+
   /supports-color/5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
     engines: {node: '>=4'}
@@ -5047,6 +5064,11 @@ packages:
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+    dev: true
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
     dev: true
 
   /vite-node/0.25.8:
