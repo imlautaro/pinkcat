@@ -1,7 +1,14 @@
 import { colors } from '@unocss/preset-mini'
 
 export default defineNuxtConfig({
-	css: ['~/assets/css/styles.css'],
+	build: {
+		transpile: ['vuetify'],
+	},
+	css: [
+		'~/assets/css/styles.css',
+		'@mdi/font/css/materialdesignicons.css',
+		'vuetify/styles',
+	],
 	extends: ['supauth'],
 	googleFonts: {
 		families: {
