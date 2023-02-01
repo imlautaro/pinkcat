@@ -1,15 +1,27 @@
-import { colors } from '@unocss/preset-mini'
-
 export default defineNuxtConfig({
-	css: ['~/assets/css/styles.css'],
-	extends: ['supauth'],
+	build: {
+		transpile: ['vuetify'],
+	},
+	css: ['@mdi/font/css/materialdesignicons.css', '~/assets/css/main.scss'],
 	googleFonts: {
 		families: {
-			Inter: [400, 500, 700, 900],
+			Roboto: [300, 400, 500, 600, 700, 800, 900],
 		},
 	},
-	modules: ['@nuxtjs/google-fonts', '@nuxtjs/supabase', 'nuxt-schema-org'],
+	imports: {
+		dirs: ['stores', 'types'],
+	},
+	modules: [
+		'@nuxtjs/google-fonts',
+		'@nuxtjs/supabase',
+		'nuxt-schema-org',
+		'@pinia/nuxt',
+	],
+	pinia: {
+		autoImports: ['defineStore'],
+	},
 	runtimeConfig: {
+		telegramAccessToken: process.env.TELEGRAM_ACCESS_TOKEN,
 		public: {
 			siteURL: 'http://localhost:3000',
 		},
@@ -21,17 +33,4 @@ export default defineNuxtConfig({
 		title: 'PINKCAT | Tienda de artículos para amantes de los gatos',
 	},
 	srcDir: 'src',
-	unocss: {
-		shortcuts: {
-			'text-primary': 'text-primary-300',
-			'text-secondary': 'text-gray-600',
-			'bg-primary': 'bg-primary-300',
-		},
-		theme: {
-			colors: {
-				primary: colors!.pink,
-				gray: colors!.neutral,
-			},
-		},
-	},
 })

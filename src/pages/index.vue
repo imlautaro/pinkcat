@@ -47,32 +47,33 @@ const categories = computed((): Category[] => {
 	<Head>
 		<Title>PINKCAT | Tienda de artículos para amantes de los gatos</Title>
 	</Head>
-	<div class="min-h-screen">
-		<Container v-if="products">
-			<Stack v-for="category in categories" gap="12" vertical>
-				<span class="text-2xl text-center md:text-left">
-					{{ category.name }}
-				</span>
-				<div class="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-12">
+	<v-container v-if="products" class="py-16">
+		<v-alert type="info" class="mb-16">
+			Este sitio está siendo desarrollado, pero puedes explorar entre
+			algunos productos, ver sus precios y realizar pedidos sin problemas.
+		</v-alert>
+		<div v-for="category in categories">
+			<h2 class="text-h4 mb-8">Michi-{{ category.name }}</h2>
+			<v-row>
+				<v-col
+					v-for="product in products.filter(
+						p => p.category.slug === category.slug
+					)"
+					cols="12"
+					sm="6"
+					lg="4"
+					xl="3"
+				>
 					<Product
-						v-for="product in products.filter(
-							p => p.category.slug === category.slug
-						)"
-						class="col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-4 xl:col-span-3"
-						:name="product.name"
-						:category_slug="product.category.slug"
-						:extra="product.parent?.name"
 						:price="product.price || product.parent?.price || 0"
-						:image="product.image"
+						:name="product.name"
+						:category="product.category.slug"
+						:image="product.image || ''"
+						:parent-name="product.parent?.name"
 						:slug="product.slug"
 					/>
-					<div
-						class="col-span-6 text-xl text-gray-400 sm:col-span-3 md:col-span-6 lg:col-span-4 xl:col-span-3 bg-gray-200 h-full rounded-md flex items-center justify-center p-12 text-center"
-					>
-						Más productos próximamente
-					</div>
-				</div>
-			</Stack>
-		</Container>
-	</div>
+				</v-col>
+			</v-row>
+		</div>
+	</v-container>
 </template>
