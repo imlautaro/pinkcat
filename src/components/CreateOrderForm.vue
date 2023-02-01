@@ -34,7 +34,7 @@ const error = ref(false)
 const success = ref(false)
 
 const createOrder = async () => {
-	if (!name.value || /^([a-z0-9\.\_])*$/.test(igUsername.value)) return
+	if (!name.value || !/^([a-z0-9\.\_])*$/.test(igUsername.value)) return
 
 	pending.value = true
 
