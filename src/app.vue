@@ -3,16 +3,16 @@ useHead({
 	meta: [
 		{
 			name: 'theme-color',
-			content: '#171717',
+			content: '#212121',
 		},
 	],
 })
 </script>
 
 <template>
-	<div>
+	<v-app class="bg-grey-lighten-5">
 		<NuxtLayout>
 			<NuxtPage />
 		</NuxtLayout>
-	</div>
+	</v-app>
 </template>

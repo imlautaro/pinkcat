@@ -2,6 +2,10 @@
 const supabase = useSupabaseClient()
 const route = useRoute()
 
+interface Size {
+	[key: string]: string
+}
+
 interface Product {
 	id: number
 	name: string
@@ -12,7 +16,13 @@ interface Product {
 	parent?: {
 		name: string
 		price: number
+		sizes?: string
 	}
+	category: {
+		name: string
+		slug: string
+	}
+	sizes?: string
 }
 
 const { data: product } = await useLazyAsyncData(
@@ -21,7 +31,7 @@ const { data: product } = await useLazyAsyncData(
 		const { data } = await supabase
 			.from('products')
 			.select(
-				'id, name, price, image, visible, slug, parent:parent_id(name, price)'
+				'id, name, price, image, visible, slug, parent:parent_id(name, price, sizes), category:category_id(name, slug), sizes'
 			)
 			.eq('slug', route.params.product_slug)
 			.single()
@@ -35,13 +45,21 @@ const { data: products } = await useLazyAsyncData(
 		const { data } = await supabase
 			.from('products')
 			.select(
-				'id, name, price, image, visible, slug, parent:parent_id(name, price)'
+				'id, name, price, image, visible, slug, parent:parent_id(name, price), category:category_id(name, slug)'
 			)
 			.not('slug', 'eq', route.params.product_slug)
 			.limit(3)
 		return data as Product[]
 	}
 )
+
+const sizes = computed(() =>
+	JSON.parse(product.value?.sizes || product.value?.parent?.sizes || '[]')
+)
+
+const size = ref('S')
+
+const createOrder = ref(false)
 </script>
 
 <template>
@@ -52,70 +70,143 @@ const { data: products } = await useLazyAsyncData(
 				}}{{ product.name }}
 			</Title>
 		</Head>
-		<Container class="flex flex-col space-y-12" max="lg">
-			<NuxtLink to="/"> &leftarrow; Volver al inicio </NuxtLink>
-			<Card>
-				<div class="grid grid-cols-6 md:grid-cols-12">
-					<div class="col-span-6">
-						<img :src="product.image" />
-					</div>
-					<div
-						class="col-span-6 flex flex-col space-y-6 md:(items-start p-12 text-left) text-center p-6"
+		<v-container>
+			<div class="d-flex align-center justify-space-between">
+				<v-btn
+					class="mb-8"
+					prepend-icon="mdi-arrow-left"
+					variant="text"
+					to="/"
+				>
+					Volver al inicio
+				</v-btn>
+			</div>
+			<v-card class="mb-8" rounded="xl" border variant="flat">
+				<v-row>
+					<v-col cols="12" md="6">
+						<v-img :src="product.image" />
+					</v-col>
+					<v-col
+						class="d-flex flex-column align-start py-16 px-8"
+						cols="12"
+						md="6"
 					>
-						<Stack gap="1" vertical>
-							<h1 class="text-2xl">
-								{{ product.name }}
-							</h1>
-							<span class="text-secondary">
-								{{ product.parent?.name }}
-							</span>
-						</Stack>
-						<span>
-							$
-							{{
+						<span class="text-h5">{{ product.name }}</span>
+						<span class="text-medium-emphasis">{{
+							product.parent?.name
+						}}</span>
+
+						<span class="my-8 text-h4">
+							${{
 								product.parent
 									? product.parent.price
 									: product.price
 							}}
 						</span>
-						<Stack
-							class="bg-sky-600/10 p-4 text-sky-900 rounded-md text-left"
-							gap="2"
-							vertical
+
+						<div
+							class="d-flex flex-column align-start"
+							style="width: 100%"
 						>
-							<Icon name="ion:information-circle" />
-							<p>
-								Recién estamos empezando y nos alegra tenerte
-								acá, pero por el momento no tenemos habilitadas
-								las compras desde esta plataforma. Si te gustó
-								este artículo y te gustaría comprarlo podés
-								enviarnos un mensaje por Instagram.
-							</p>
-						</Stack>
-						<NuxtLink
-							class="bg-primary font-medium px-5 py-3 rounded-md text-lg"
-							to="https://instagram.com/pinkcatok"
+							<v-select
+								:items="sizes"
+								item-value="Talle"
+								item-title="Talle"
+								label="Talle"
+								variant="outlined"
+								hide-details
+								v-model="size"
+								class="mb-2"
+							/>
+							<v-dialog>
+								<template #activator="{ props }">
+									<button
+										v-bind="props"
+										class="text-body-2 text-pink"
+									>
+										Ver guía de talles
+									</button>
+								</template>
+								<v-card>
+									<tshirt-sizes />
+								</v-card>
+							</v-dialog>
+						</div>
+
+						<div
+							v-if="false && sizes"
+							class="d-flex flex-column align-start"
 						>
-							Ir a Instagram
-						</NuxtLink>
-					</div>
-				</div>
-			</Card>
-			<h3 class="text-2xl text-center">Más productos</h3>
-			<div
-				v-if="products"
-				class="grid grid-cols-6 md:grid-cols-12 gap-12"
-			>
-				<Product
-					class="col-span-6 md:col-span-4"
-					v-for="product in products"
-					:name="product.name"
-					:extra="product.parent?.name"
-					:price="product.price || product.parent?.price || 0"
-					:image="product.image"
-					:slug="product.slug"
-				/>
-			</div>
-		</Container>
+							<span>Talles</span>
+							<v-btn-toggle
+								class="my-2"
+								color="pink"
+								variant="outlined"
+								mandatory
+								v-model="size"
+							>
+								<v-btn v-for="size in sizes">
+									{{ size[Object.keys(size)[0]] }}
+								</v-btn>
+							</v-btn-toggle>
+						</div>
+
+						<div class="d-flex align-center my-8">
+							<v-icon class="mr-1">mdi-tree-outline</v-icon>
+							<span class="text-body-2">100% algodón</span>
+						</div>
+
+						<div class="d-flex align-center">
+							<v-dialog
+								v-model="createOrder"
+								fullscreen
+								transition="dialog-bottom-transition"
+							>
+								<template #activator="{ props }">
+									<v-btn
+										color="pink-lighten-4"
+										size="large"
+										variant="flat"
+										append-icon="mdi-chevron-right"
+										rounded="lg"
+										v-bind="props"
+									>
+										Realizar pedido
+									</v-btn>
+								</template>
+								<v-card>
+									<v-toolbar dark color="pink-lighten-4">
+										<v-btn
+											icon="mdi-close"
+											@click="createOrder = false"
+										/>
+										<v-toolbar-title>
+											Realizar pedido
+										</v-toolbar-title>
+									</v-toolbar>
+									<CreateOrderForm
+										:product="product"
+										:size="size"
+									/>
+								</v-card>
+							</v-dialog>
+						</div>
+					</v-col>
+				</v-row>
+			</v-card>
+			<span class="text-h5">Más productos</span>
+			<v-row class="mt-4">
+				<v-col v-for="product in products" cols="12" lg="4">
+					<Product
+						:price="product.price || product.parent?.price || 0"
+						:name="product.name"
+						:category="product.category.slug"
+						:image="product.image || ''"
+						:parent-name="product.parent?.name"
+						:slug="product.slug"
+					/>
+				</v-col>
+			</v-row>
+		</v-container>
 	</div>
 </template>
