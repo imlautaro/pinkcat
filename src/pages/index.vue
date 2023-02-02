@@ -48,7 +48,7 @@ const categories = computed((): Category[] => {
 		<Title>PINKCAT | Tienda de artículos para amantes de los gatos</Title>
 	</Head>
 	<v-container v-if="products" class="py-16">
-		<v-alert type="info" class="mb-16">
+		<v-alert type="info" class="mb-16" rounded="lg">
 			Este sitio está siendo desarrollado, pero puedes explorar entre
 			algunos productos, ver sus precios y realizar pedidos sin problemas.
 		</v-alert>
