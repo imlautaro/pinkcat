@@ -1,5 +1,8 @@
 <script setup lang="ts">
 useHead({
+	htmlAttrs: {
+		lang: 'es-AR',
+	},
 	meta: [
 		{
 			name: 'theme-color',
