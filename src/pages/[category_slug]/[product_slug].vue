@@ -71,16 +71,19 @@ const name = computed(() => {
 	return ''
 })
 
-defineProduct({
-	name: name.value,
-	image: product.value?.image || '',
-	offers: [
-		{
-			price: product.value?.price || product.value?.parent?.price || 0,
-			priceCurrency: 'ARS',
-		},
-	],
-})
+useSchemaOrg([
+	defineProduct({
+		name: name.value,
+		image: product.value?.image || '',
+		offers: [
+			{
+				price:
+					product.value?.price || product.value?.parent?.price || 0,
+				priceCurrency: 'ARS',
+			},
+		],
+	}),
+])
 </script>
 
 <template>
