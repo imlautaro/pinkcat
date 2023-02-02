@@ -31,7 +31,11 @@ export default defineNuxtConfig({
 		'@pinia/nuxt',
 		'@nuxt/image-edge',
 		'nuxt-delay-hydration',
+		'@nuxtjs/partytown',
 	],
+	partytown: {
+		forward: ['dataLayer.push'],
+	},
 	pinia: {
 		autoImports: ['defineStore'],
 	},
