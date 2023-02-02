@@ -16,6 +16,7 @@
 					class="flex p-2"
 					target="_blank"
 					rel="nofollow noopener noreferrer"
+					aria-label="Cuenta de Instagram de PINKCAT"
 					to="https://www.instagram.com/pinkcatok"
 				>
 					<Icon name="fa-brands:instagram" />
