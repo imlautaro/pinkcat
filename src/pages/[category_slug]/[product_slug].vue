@@ -177,7 +177,10 @@ useSchemaOrg([
 		>
 			<!-- Product Image -->
 			<div class="col-span-6">
-				<img :src="product.image" />
+				<nuxt-img
+					sizes="sm:100vw md:348px lg:476px xl:604px 2xl:732px"
+					:src="product.image"
+				/>
 			</div>
 			<!-- Product Information -->
 			<Stack
@@ -287,7 +290,7 @@ useSchemaOrg([
 				style="max-height: 80vh"
 			>
 				<div class="col-span-6 p-6 lt-md:pb-0 md:(pr-4 p-8)">
-					<img
+					<nuxt-img
 						class="mx-auto lt-md:w-64"
 						src="/tshirt-sizes-guide.png"
 					/>
@@ -325,7 +328,7 @@ useSchemaOrg([
 					justify="between"
 					vertical
 				>
-					<img class="hidden md:flex" :src="product.image" />
+					<nuxt-img class="hidden md:flex" :src="product.image" />
 					<Stack items="center" justify="between">
 						<Stack vertical>
 							<span class="font-medium">{{ product.name }}</span>

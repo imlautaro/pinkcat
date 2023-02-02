@@ -8,6 +8,16 @@ export default defineNuxtConfig({
 			Inter: [400, 500, 700, 900],
 		},
 	},
+	image: {
+		domains: ['tgwtpbjwrdhmwrlpvzzo.supabase.co'],
+		screens: {
+			'sm': 640,
+			'md': 768,
+			'lg': 1024,
+			'xl': 1280,
+			'2xl': 1536,
+		},
+	},
 	imports: {
 		dirs: ['stores', 'types'],
 	},
@@ -16,6 +26,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/supabase',
 		'nuxt-schema-org',
 		'@pinia/nuxt',
+		'@nuxt/image-edge',
 	],
 	pinia: {
 		autoImports: ['defineStore'],

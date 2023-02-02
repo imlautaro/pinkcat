@@ -8,13 +8,13 @@
 		"postinstall": "nuxt prepare"
 	},
 	"devDependencies": {
+		"@nuxt/image-edge": "1.0.0-27919678.2f5b64b",
 		"@nuxtjs/google-fonts": "3.0.0-1",
 		"@nuxtjs/supabase": "^0.3.0",
 		"@pinia/nuxt": "^0.4.6",
-		"nuxt": "^3.0.0",
-		"nuxt-schema-org": "^2.1.0",
+		"nuxt": "^3.1.1",
+		"nuxt-schema-org": "^2.1.1",
 		"oxecore": "^0.0.1",
-		"sass": "^1.57.1",
 		"sitemap": "^7.1.1"
 	}
 }
