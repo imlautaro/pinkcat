@@ -2,6 +2,9 @@ import { colors } from '@unocss/preset-mini'
 
 export default defineNuxtConfig({
 	css: ['~/assets/css/styles.css'],
+	delayHydration: {
+		mode: 'mount',
+	},
 	extends: 'oxecore',
 	googleFonts: {
 		families: {
@@ -27,6 +30,7 @@ export default defineNuxtConfig({
 		'nuxt-schema-org',
 		'@pinia/nuxt',
 		'@nuxt/image-edge',
+		'nuxt-delay-hydration',
 	],
 	pinia: {
 		autoImports: ['defineStore'],

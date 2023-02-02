@@ -6,6 +6,7 @@ specifiers:
   '@nuxtjs/supabase': ^0.3.0
   '@pinia/nuxt': ^0.4.6
   nuxt: ^3.1.1
+  nuxt-delay-hydration: ^1.1.0
   nuxt-schema-org: ^2.1.1
   oxecore: ^0.0.1
   sitemap: ^7.1.1
@@ -16,6 +17,7 @@ devDependencies:
   '@nuxtjs/supabase': 0.3.0
   '@pinia/nuxt': 0.4.6
   nuxt: 3.1.1
+  nuxt-delay-hydration: 1.1.0
   nuxt-schema-org: 2.1.1
   oxecore: 0.0.1_nuxt@3.1.1
   sitemap: 7.1.1
@@ -1337,6 +1339,16 @@ packages:
 
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
+    dev: true
+
+  /@types/lodash.template/4.5.1:
+    resolution: {integrity: sha512-0y71S2dGgmwdkSsyW95JBp8HSZchgKCsjr6F0lsT3eSMtaT3Nn9rcMHU1U4UKu6XjQT3YC6/PNwgFI7k9f+ltw==}
+    dependencies:
+      '@types/lodash': 4.14.191
+    dev: true
+
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
     dev: true
 
   /@types/node/17.0.45:
@@ -4027,6 +4039,19 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+  /nuxt-delay-hydration/1.1.0:
+    resolution: {integrity: sha512-qywpbGPHLrAHzHRFEw9CSGo8wp0sfRH+DHHwonj1Mw65Ploh8MKGk3k7hQFfKzluIP+nK3T739uwGjagwhNpLA==}
+    dependencies:
+      '@nuxt/kit': 3.1.1
+      '@types/lodash.template': 4.5.1
+      lodash.template: 4.5.0
+      packrup: 0.1.0
+      radix3: 1.0.0
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: true
+
   /nuxt-icon/0.1.8:
     resolution: {integrity: sha512-oPFlLOZCy80MN+hf49+mBkOIHWVF3sOqZREQZw3qD0N6wGlR15QeRQtKQC8qGeQcc+xvpLQm0GvrdJ8FxFOPYg==}
     dependencies:
@@ -4234,6 +4259,10 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       aggregate-error: 4.0.1
+    dev: true
+
+  /packrup/0.1.0:
+    resolution: {integrity: sha512-HnUl9ztHGty5ZK13WM8Q7854SWPKH/eCT+MiTO0P1qCu1Y4S5PPJ8E9MwD3cnjSr7PUPzXDnmOVJIKM043OfJQ==}
     dev: true
 
   /parse-git-config/3.0.0:
