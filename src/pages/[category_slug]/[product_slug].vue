@@ -60,6 +60,27 @@ const sizes = computed(() =>
 const size = ref('S')
 
 const createOrder = ref(false)
+
+const name = computed(() => {
+	if (product.value) {
+		if (product.value.parent) {
+			return `${product.value.parent.name} - ${product.value.name}`
+		}
+		return product.value.name
+	}
+	return ''
+})
+
+defineProduct({
+	name: name.value,
+	image: product.value?.image || '',
+	offers: [
+		{
+			price: product.value?.price || product.value?.parent?.price || 0,
+			priceCurrency: 'ARS',
+		},
+	],
+})
 </script>
 
 <template>

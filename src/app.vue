@@ -7,6 +7,21 @@ useHead({
 		},
 	],
 })
+
+useSchemaOrg([
+	defineOrganization({
+		name: 'PINKCAT',
+		logo: '/logo.png',
+		sameAs: [
+			'https://www.instagram.com/pinkcatok/',
+			'https://www.facebook.com/PinkCatTienda',
+		],
+	}),
+	defineWebSite({
+		name: 'PINKCAT',
+	}),
+	defineWebPage(),
+])
 </script>
 
 <template>
