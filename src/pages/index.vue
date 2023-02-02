@@ -73,7 +73,7 @@ useHead(() => ({
 					v-for="product in products.filter(
 						product => product.category.slug === category.slug
 					)"
-					class="col-span-6 md:col-span-3"
+					class="col-span-6 lg:col-span-4 2xl:col-span-3"
 				>
 					<Product
 						:price="product.price || product.parent?.price || 0"

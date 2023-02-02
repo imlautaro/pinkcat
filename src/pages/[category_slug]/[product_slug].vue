@@ -44,7 +44,7 @@ const { data: products } = await useLazyAsyncData(
 				'id, name, price, image, visible, slug, parent:parent_id(name, price), category:category_id(name, slug)'
 			)
 			.not('slug', 'eq', route.params.product_slug)
-			.limit(3)
+			.limit(4)
 		return data as Product[]
 	}
 )
@@ -180,6 +180,11 @@ useSchemaOrg([
 				<nuxt-img
 					sizes="sm:100vw md:348px lg:476px xl:604px 2xl:732px"
 					:src="product.image"
+					:alt="
+						product.parent?.name
+							? `${product.parent.name} - ${product.name}`
+							: product.name
+					"
 				/>
 			</div>
 			<!-- Product Information -->
@@ -293,6 +298,8 @@ useSchemaOrg([
 					<nuxt-img
 						class="mx-auto lt-md:w-64"
 						src="/tshirt-sizes-guide.png"
+						sizes="sm:256px md:336px"
+						alt="Guía para tomar medidas a una remera"
 					/>
 				</div>
 				<Stack class="col-span-6 p-6 md:(pl-4 p-8)" gap="6" vertical>
@@ -328,7 +335,17 @@ useSchemaOrg([
 					justify="between"
 					vertical
 				>
-					<nuxt-img class="hidden md:flex" :src="product.image" />
+					<nuxt-img
+						width="319px"
+						height="319px"
+						class="hidden md:flex"
+						:src="product.image"
+						:alt="
+							product.parent?.name
+								? `${product.parent.name} - ${product.name}`
+								: product.name
+						"
+					/>
 					<Stack items="center" justify="between">
 						<Stack vertical>
 							<span class="font-medium">{{ product.name }}</span>
@@ -452,7 +469,7 @@ useSchemaOrg([
 				</div>
 				<div
 					v-for="product in products"
-					class="col-span-6 md:col-span-4"
+					class="col-span-6 lg:col-span-4 2xl:col-span-3"
 				>
 					<Product
 						:price="product.price || product.parent?.price || 0"

@@ -14,7 +14,11 @@ defineProps<{
 		class="bg-white border flex flex-col overflow-hidden rounded-3xl"
 		:to="`/${category}/${slug}`"
 	>
-		<nuxt-img :src="image" />
+		<nuxt-img
+			sizes="sm:100vw md:354px lg:312px xl:398px 2xl:356px"
+			:src="image"
+			:alt="`${parentName} - ${name}`"
+		/>
 		<Stack class="p-6" gap="4" items="center" justify="between">
 			<Stack class="overflow-hidden" vertical>
 				<span
