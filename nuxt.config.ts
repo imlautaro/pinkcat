@@ -3,7 +3,7 @@ import { colors } from '@unocss/preset-mini'
 export default defineNuxtConfig({
 	css: ['~/assets/css/styles.css'],
 	delayHydration: {
-		mode: 'init',
+		mode: 'mount',
 	},
 	extends: 'oxecore',
 	googleFonts: {
