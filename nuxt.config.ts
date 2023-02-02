@@ -23,6 +23,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		telegramAccessToken: process.env.TELEGRAM_ACCESS_TOKEN,
 		public: {
+			gtmContainerId: process.env.GTM_CONTAINER_ID,
 			siteURL: 'http://localhost:3000',
 		},
 	},
