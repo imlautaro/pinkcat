@@ -53,7 +53,7 @@ const categories = computed((): Category[] => {
 			algunos productos, ver sus precios y realizar pedidos sin problemas.
 		</v-alert>
 		<div v-for="category in categories">
-			<h2 class="text-h4 mb-8">Michi-{{ category.name }}</h2>
+			<h2 class="text-h4 mb-8">{{ category.name }} de gatos</h2>
 			<v-row>
 				<v-col
 					v-for="product in products.filter(
