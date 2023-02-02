@@ -34,20 +34,32 @@ const sizes = [
 </script>
 
 <template>
-	<v-table>
-		<thead>
-			<tr>
-				<th v-for="key in Object.keys(sizes[0])">
-					{{ key }}
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr v-for="size in sizes">
-				<td v-for="key in Object.keys(size)">
-					{{ size[key as keyof typeof size] }}
-				</td>
-			</tr>
-		</tbody>
-	</v-table>
+	<div class="bg-gray-100 rounded-2xl">
+		<table class="text-sm w-full">
+			<thead>
+				<tr>
+					<th
+						v-for="key in Object.keys(sizes[0])"
+						class="p-4"
+						:class="{
+							'text-red-600': key === 'Sisa',
+							'text-blue-600': key === 'Largo',
+						}"
+					>
+						{{ key }}
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="size in sizes">
+					<td
+						v-for="key in Object.keys(size)"
+						class="p-4 text-center"
+					>
+						{{ size[key as keyof typeof size] }}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </template>

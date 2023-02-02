@@ -8,14 +8,13 @@
 		"postinstall": "nuxt prepare"
 	},
 	"devDependencies": {
-		"@mdi/font": "^7.1.96",
 		"@nuxtjs/google-fonts": "3.0.0-1",
 		"@nuxtjs/supabase": "^0.3.0",
 		"@pinia/nuxt": "^0.4.6",
 		"nuxt": "^3.0.0",
 		"nuxt-schema-org": "^2.1.0",
+		"oxecore": "^0.0.1",
 		"sass": "^1.57.1",
-		"sitemap": "^7.1.1",
-		"vuetify": "^3.1.2"
+		"sitemap": "^7.1.1"
 	}
 }

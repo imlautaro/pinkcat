@@ -1,11 +1,11 @@
+import { colors } from '@unocss/preset-mini'
+
 export default defineNuxtConfig({
-	build: {
-		transpile: ['vuetify'],
-	},
-	css: ['@mdi/font/css/materialdesignicons.css', '~/assets/css/main.scss'],
+	css: ['~/assets/css/styles.css'],
+	extends: 'oxecore',
 	googleFonts: {
 		families: {
-			Roboto: [300, 400, 500, 600, 700, 800, 900],
+			Inter: [400, 500, 700, 900],
 		},
 	},
 	imports: {
@@ -34,4 +34,12 @@ export default defineNuxtConfig({
 		title: 'PINKCAT | Tienda de artículos para amantes de los gatos',
 	},
 	srcDir: 'src',
+	unocss: {
+		theme: {
+			colors: {
+				primary: colors!.pink,
+				gray: colors!.neutral,
+			},
+		},
+	},
 })

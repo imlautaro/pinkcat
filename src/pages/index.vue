@@ -41,28 +41,39 @@ const categories = computed((): Category[] => {
 		}, [] as Category[]) || []
 	)
 })
+
+const runtimeConfig = useRuntimeConfig()
+useHead(() => ({
+	title: 'PINKCAT | Tienda de artículos para amantes de los gatos',
+	meta: [
+		{
+			name: 'description',
+			content:
+				'Si sos fan de los gatos y te encanta tenerlos por todos lados, definitivamente este es el lugar indicado para vos',
+		},
+	],
+	link: [
+		{
+			rel: 'canonical',
+			href: `${runtimeConfig.public.siteURL}/`,
+		},
+	],
+}))
 </script>
 
 <template>
-	<Head>
-		<Title>PINKCAT | Tienda de artículos para amantes de los gatos</Title>
-	</Head>
-	<v-container v-if="products" class="py-16">
-		<v-alert type="info" class="mb-16" rounded="lg">
-			Este sitio está siendo desarrollado, pero puedes explorar entre
-			algunos productos, ver sus precios y realizar pedidos sin problemas.
-		</v-alert>
-		<div v-for="category in categories">
-			<h2 class="text-h4 mb-8">{{ category.name }} de gatos</h2>
-			<v-row>
-				<v-col
+	<div v-if="products">
+		<Container
+			v-for="category in categories"
+			class="flex flex-col py-16 space-y-12"
+		>
+			<h2 class="text-4xl">Remeras de gatos</h2>
+			<div class="grid grid-cols-6 md:grid-cols-12 gap-6">
+				<div
 					v-for="product in products.filter(
-						p => p.category.slug === category.slug
+						product => product.category.slug === category.slug
 					)"
-					cols="12"
-					sm="6"
-					lg="4"
-					xl="3"
+					class="col-span-6 md:col-span-3"
 				>
 					<Product
 						:price="product.price || product.parent?.price || 0"
@@ -72,8 +83,8 @@ const categories = computed((): Category[] => {
 						:parent-name="product.parent?.name"
 						:slug="product.slug"
 					/>
-				</v-col>
-			</v-row>
-		</div>
-	</v-container>
+				</div>
+			</div>
+		</Container>
+	</div>
 </template>

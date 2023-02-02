@@ -6,7 +6,7 @@ useHead({
 	meta: [
 		{
 			name: 'theme-color',
-			content: '#212121',
+			content: '#ffffff',
 		},
 	],
 })
@@ -28,9 +28,7 @@ useSchemaOrg([
 </script>
 
 <template>
-	<v-app class="bg-grey-lighten-5">
-		<NuxtLayout>
-			<NuxtPage />
-		</NuxtLayout>
-	</v-app>
+	<NuxtLayout>
+		<NuxtPage />
+	</NuxtLayout>
 </template>

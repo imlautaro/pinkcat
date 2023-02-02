@@ -10,45 +10,28 @@ defineProps<{
 </script>
 
 <template>
-	<v-card :to="`/${category}/${slug}`" rounded="xl" border variant="flat">
-		<v-img :src="image" />
-		<div class="d-flex align-center justify-space-between px-6 py-6">
-			<div class="d-flex flex-column">
-				<span class="text-body font-weight-bold">
+	<NuxtLink
+		class="bg-white border flex flex-col overflow-hidden rounded-3xl"
+		:to="`/${category}/${slug}`"
+	>
+		<img :src="image" />
+		<Stack class="p-6" gap="4" items="center" justify="between">
+			<Stack class="overflow-hidden" vertical>
+				<span
+					class="font-medium overflow-hidden whitespace-nowrap"
+					style="text-overflow: ellipsis"
+				>
 					{{ name }}
 				</span>
-				<span
-					v-if="parentName"
-					class="text-body-2 text-medium-emphasis"
-				>
+				<span v-if="parentName" class="text-gray-600 text-sm">
 					{{ parentName }}
 				</span>
-			</div>
-			<v-chip> AR${{ price }} </v-chip>
-		</div>
-		<!--
-        <v-row dense class="px-2 pb-2 pt-1 border-t">
-            <v-col cols="12" md="6">
-                <v-btn
-                    prepend-icon="mdi-cart-plus"
-                    block
-                    color="primary"
-                    variant="text"
-                >
-                    Añadir
-                </v-btn>
-            </v-col>
-            <v-col cols="12" md="6">
-                <v-btn
-                    prepend-icon="mdi-eye"
-                    block
-                    variant="text"
-                    :to="`/${product.category.slug}/${product.slug}`"
-                >
-                    Ver detalles
-                </v-btn>
-            </v-col>
-        </v-row>
-        -->
-	</v-card>
+			</Stack>
+			<span
+				class="bg-gray-100 font-medium rounded-full px-3 py-1.5 text-sm"
+			>
+				AR${{ price }}
+			</span>
+		</Stack>
+	</NuxtLink>
 </template>
