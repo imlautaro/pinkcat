@@ -1,5 +1,5 @@
 <template>
-	<footer class="bg-white border-t py-8 text-sm">
+	<footer class="bg-white border-t py-8 text-sm text-gray-600">
 		<Container
 			class="flex lt-md:(flex-col space-y-4) items-center justify-between"
 		>
