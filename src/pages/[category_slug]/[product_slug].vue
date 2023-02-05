@@ -206,9 +206,9 @@ useSchemaOrg([
 						<span>Remeras</span>
 					</Stack>
 					<Stack vertical>
-						<span class="font-medium text-2xl">
+						<h1 class="font-medium text-2xl">
 							{{ product.name }}
-						</span>
+						</h1>
 						<span v-if="product.parent" class="text-gray-600">
 							{{ product.parent.name }}
 						</span>
