@@ -42,7 +42,6 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		telegramAccessToken: process.env.TELEGRAM_ACCESS_TOKEN,
 		public: {
-			chatwootWebsiteToken: process.env.CHATWOOT_WEBSITE_TOKEN,
 			gtmContainerId: process.env.GTM_CONTAINER_ID,
 			siteURL: 'http://localhost:3000',
 		},
