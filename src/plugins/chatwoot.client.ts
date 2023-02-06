@@ -22,9 +22,6 @@ export default defineNuxtPlugin(nuxtApp => {
                               })
                             }
                           })(document,"script");`,
-						tagPriority: 'high',
-						async: true,
-						type: 'text/partytown',
 					},
 				],
 			})
