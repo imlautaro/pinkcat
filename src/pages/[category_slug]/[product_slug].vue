@@ -272,13 +272,14 @@ useSchemaOrg([
 					</Stack>
 				</Stack>
 				<hr />
-				<button
+				<Button
 					@click="showCreateOrderForm = true"
-					class="bg-gray-900 hover:bg-gray-800 duration-100 flex font-medium items-center justify-between px-5 py-4 rounded-2xl shadow-md space-x-4 text-white sm:w-min whitespace-nowrap"
+					icon="heroicons:chevron-right"
+					block
+					class="sm:w-min"
 				>
-					<span class="flex-1 text-left w-full">Hacer un pedido</span>
-					<Icon name="heroicons:chevron-right" />
-				</button>
+					Hacer un pedido
+				</Button>
 			</Stack>
 		</Container>
 		<Transition name="backdrop">
@@ -376,7 +377,7 @@ useSchemaOrg([
 								v-model="firstName"
 								class="bg-gray-100 pl-12 px-5 py-4 w-full rounded-2xl"
 								type="text"
-								placeholder="Ej: Ariana"
+								placeholder="Ej: Usuario"
 							/>
 							<Icon
 								v-if="isValid.firstName === true"
@@ -395,7 +396,7 @@ useSchemaOrg([
 							<input
 								class="bg-gray-100 pl-12 px-5 py-4 w-full rounded-2xl"
 								type="text"
-								placeholder="Ej: arianagrande"
+								placeholder="Ej: usuario"
 								v-model="igUsername"
 							/>
 							<Icon
@@ -421,20 +422,14 @@ useSchemaOrg([
 							concretar la compra.
 						</p>
 					</Stack>
-					<button
+					<Button
 						@click="createOrder"
-						class="bg-gray-900 hover:bg-gray-800 duration-100 flex font-medium items-center justify-between px-5 py-4 rounded-2xl shadow-md space-x-4 text-white whitespace-nowrap"
+						:pending="pending"
+						icon="heroicons:paper-airplane"
+						block
 					>
-						<Icon
-							v-if="pending"
-							class="animate-spin mx-auto"
-							name="tabler:loader-2"
-						/>
-						<template v-else>
-							<span class="flex-1 text-left w-full">Enviar</span>
-							<Icon name="heroicons:paper-airplane" />
-						</template>
-					</button>
+						Enviar
+					</Button>
 				</Stack>
 			</div>
 		</Transition>
