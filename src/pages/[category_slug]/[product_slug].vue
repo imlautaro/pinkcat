@@ -185,6 +185,7 @@ useSchemaOrg([
 							? `${product.parent.name} - ${product.name}`
 							: product.name
 					"
+					format="webp"
 				/>
 			</div>
 			<!-- Product Information -->
@@ -301,6 +302,7 @@ useSchemaOrg([
 						src="/tshirt-sizes-guide.png"
 						sizes="sm:256px md:336px"
 						alt="Guía para tomar medidas a una remera"
+						format="webp"
 					/>
 				</div>
 				<Stack class="col-span-6 p-6 md:(pl-4 p-8)" gap="6" vertical>
@@ -346,6 +348,7 @@ useSchemaOrg([
 								? `${product.parent.name} - ${product.name}`
 								: product.name
 						"
+						format="webp"
 					/>
 					<Stack items="center" justify="between">
 						<Stack vertical>

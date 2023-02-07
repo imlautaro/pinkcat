@@ -18,6 +18,7 @@ defineProps<{
 			sizes="sm:100vw md:354px lg:312px xl:398px 2xl:356px"
 			:src="image"
 			:alt="`${parentName} - ${name}`"
+			format="webp"
 		/>
 		<Stack class="p-6" gap="4" items="center" justify="between">
 			<Stack class="overflow-hidden" vertical>
