@@ -67,7 +67,7 @@ useHead(() => ({
 			v-for="category in categories"
 			class="flex flex-col py-16 space-y-12"
 		>
-			<h2 class="text-4xl">Remeras de gatos</h2>
+			<h1 class="text-4xl">Remeras de gatos</h1>
 			<div class="grid grid-cols-6 md:grid-cols-12 gap-6">
 				<div
 					v-for="product in products.filter(
